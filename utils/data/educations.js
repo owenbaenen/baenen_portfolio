@@ -1,20 +1,18 @@
 export const educations = [
   {
     id: 1,
-    title: "Bachelor Degree",
-    duration: "2020 - Present",
-    institution: "National University of Bangladesh",
+    title: "Bachelor of Science",
+    institution: "Rice University | Houston, TX",
+    duration: "(Sep 2020 - Jun 2024)",
+    major: "Mechanical Engineering",
+    minor: "Computational and Applied Mathematics (CAAM)",
+    honors: "Distinction in Research and Creative Works" // optional extra info
   },
   {
     id: 2,
-    title: "Higher Secondary Certificate",
-    duration: "2018 - 2020",
-    institution: "Noakhali Islamia Kamil Madrasah",
-  },
-  {
-    id: 3,
-    title: "Secondary School Certificate",
-    duration: "2008 - 2018",
-    institution: "Baitus Saif Islamia Madrasah",
+    title: "High School Diploma",
+    institution: "Camas High School",
+    duration: "(Sep 2016 - Jun 2020)",
+    honors: "Student Researcher | STEM Magnet Program"
   }
 ]

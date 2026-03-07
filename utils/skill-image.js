@@ -34,6 +34,9 @@ import ionic from '../app/assets/svg/skills/ionic.svg';
 import java from '../app/assets/svg/skills/java.svg';
 import javascript from '../app/assets/svg/skills/javascript.svg';
 import julia from '../app/assets/svg/skills/julia.svg';
+import ubuntu from '../app/assets/svg/skills/ubuntu.svg';
+import freertos from '../app/assets/svg/skills/freertos.svg';
+import simulink from '../app/assets/svg/skills/simulink.svg';
 import kotlin from '../app/assets/svg/skills/kotlin.svg';
 import lightroom from '../app/assets/svg/skills/lightroom.svg';
 import markdown from '../app/assets/svg/skills/markdown.svg';
@@ -90,6 +93,12 @@ export const skillsImage = (skill) => {
   switch (skillID) {
     case 'gcp':
       return gcp;
+    case 'ubuntu':
+      return ubuntu;
+    case 'freertos':
+      return freertos;
+    case 'simulink':
+      return simulink;
     case 'html':
       return html;
     case 'photoshop':

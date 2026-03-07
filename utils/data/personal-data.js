@@ -1,11 +1,11 @@
 export const personalData = {
-  name: "ABU SAID",
-  profile: '/profile.png',
-  designation: "Software Developer",
-  description: "My name is ABU SAID. I am a professional and enthusiastic programmer in my daily life. I am a quick learner with a self-learning attitude. I love to learn and explore new technologies and am passionate about problem-solving. I love almost all the stacks of web application development and love to make the web more open to the world. My core skill is based on JavaScript and I love to do most of the things using JavaScript. I am available for any kind of job opportunity that suits my skills and interests.",
-  email: 'abusaid7388@gmail.com',
-  phone: '+8801608797655',
-  address: 'Middle Badda, Dhaka, Bangladesh - 1212 ',
+  name: "Owen Baenen",
+  profile: '/profile.jpg',
+  designation: "Engineer",
+  description: "Hello! I’m Owen Baenen. I'm a recent Mechanical Engineering graduate from Rice University with a minor in Computational and Applied Math. My interests lie at the intersection of controls, embedded systems, software, and autonomous technologies. Through academic research, simulation work, and hands-on design projects, I’ve built strong problem-solving skills especially in cross-disciplinary environments. I'm passionate about applying computational, mechanical, and software solutions to solve complex problems in emerging tech. ",
+  email: 'owen.baenen@gmail.com',
+  phone: '+(360) 644-4488',
+  address: 'Peoria IL, United States',
   github: 'https://github.com/said7388',
   facebook: 'https://www.facebook.com/abusaid.riyaz/',
   linkedIn: 'https://www.linkedin.com/in/abu-said-bd/',
@@ -13,5 +13,5 @@ export const personalData = {
   stackOverflow: 'https://stackoverflow.com/users/16840768/abu-said',
   leetcode: "https://leetcode.com/said3812/",
   devUsername: "said7388",
-  resume: "https://drive.google.com/file/d/1eyutpKFFhJ9X-qpQGKhUNnVRkB5Wer00/view?usp=sharing"
+  resume: "https://drive.google.com/file/d/10tm7tMdENwKnLfv_s9bBVrBtLQNH7zOj/view?usp=sharing"
 }

@@ -288,7 +288,7 @@ All portfolio content is managed through data files in the `utils/data/` folder:
 ```javascript
 export const personalData = {
   name: "YOUR NAME",
-  profile: "/profile.png", // Path to your profile image
+  profile: "/profile.jpg", // Path to your profile image
   designation: "Software Developer", // Your job title
   description: "Your bio and introduction...", // About yourself
   email: "your.email@example.com",
@@ -301,7 +301,7 @@ export const personalData = {
   stackOverflow: "https://stackoverflow.com/users/your-id",
   leetcode: "https://leetcode.com/yourusername/",
   devUsername: "yourusername", // dev.to username for blog integration
-  resume: "https://link-to-your-resume.pdf",
+  resume: "https://drive.google.com/file/d/10tm7tMdENwKnLfv_s9bBVrBtLQNH7zOj/view?usp=sharing",
 };
 ```
 
@@ -320,7 +320,7 @@ export const personalData = {
 Place your profile picture in the `public/` directory and update the `profile` field in `personal-data.js`:
 
 ```javascript
-profile: "/your-image-name.png"; // or .jpg, .webp
+profile: "/your-image-name.jpg"; // or .jpg, .webp
 ```
 
 ---
@@ -542,7 +542,7 @@ pnpm install
 **Solution:**
 
 - Verify images are in the `public/` directory
-- Use paths starting with `/` (e.g., `/profile.png`)
+- Use paths starting with `/` (e.g., `/profile.jpg`)
 - Check image file extensions match the code
 - Ensure image files are committed to your repository
 
