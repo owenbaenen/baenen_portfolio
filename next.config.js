@@ -1,6 +1,7 @@
 const path = require('path')
- 
-module.exports = {
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
@@ -23,4 +24,8 @@ module.exports = {
       },
     ],
   },
+  output: 'export',              // << Add this line to enable static export
+  basePath: '/ProjectPortfolio', // << Add this if your repo URL is https://username.github.io/ProjectPortfolio
 }
+
+module.exports = nextConfig
