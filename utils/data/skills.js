@@ -11,7 +11,7 @@ export const skillsData = [
   'Linux',
   'FreeRTOS',
   'OpenCV',
-  'Pytorch',
+  'TensorFlow',
   
 ]
 

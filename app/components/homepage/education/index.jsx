@@ -27,12 +27,19 @@ function Education() {
 
       {/* Section title */}
       <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Educations
+        <div className="flex items-center gap-3">
+          <span className="w-16 h-[2px] bg-[#1a1443]"></span>
+          <span className="bg-[#1a1443] text-white px-4 py-2 rounded-full text-sm sm:text-base uppercase tracking-wide font-medium flex items-center gap-2">
+            <Image
+              src="/rice-logo.svg"
+              alt="Rice University logo"
+              width={18}
+              height={18}
+              className="h-[18px] w-[18px]"
+            />
+            Education
           </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+          <span className="w-16 h-[2px] bg-[#1a1443]"></span>
         </div>
       </div>
 

@@ -1,26 +1,39 @@
 // @flow strict
 
+'use client';
+
 import * as React from 'react';
+import { useState } from 'react';
 
 function ProjectCard({ project }) {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full">
-      <div className="flex flex-row">
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-        <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-      </div>
-      <div className="px-4 lg:px-8 py-3 lg:py-5 relative">
-        <div className="flex flex-row space-x-1 lg:space-x-2 absolute top-1/2 -translate-y-1/2">
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-red-400"></div>
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-orange-400"></div>
-          <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
+      <button
+        type="button"
+        className="w-full text-left cursor-pointer transition-all duration-300 hover:shadow-[0_0_20px_rgba(22,242,179,0.25)]"
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-expanded={isOpen}
+      >
+        <div className="flex flex-row">
+          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
+          <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
         </div>
-        <p className="text-center ml-3 text-[#16f2b3] text-base lg:text-xl">
-          {project.name}
-        </p>
-      </div>
-      <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
+        <div className="px-4 lg:px-8 py-3 lg:py-5 relative">
+          <div className="flex flex-row space-x-1 lg:space-x-2 absolute top-1/2 -translate-y-1/2">
+            <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-red-400"></div>
+            <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-orange-400"></div>
+            <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
+          </div>
+          <p className="text-center ml-3 text-[#16f2b3] text-base lg:text-xl">
+            {project.name}
+          </p>
+        </div>
+      </button>
+      <div
+        className={`overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 transition-all duration-300 ${isOpen ? 'max-h-[1200px] py-4 lg:py-8 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
+      >
         <code className="font-mono text-xs md:text-sm lg:text-base">
           <div className="blink">
             <span className="mr-2 text-pink-500">const</span>
