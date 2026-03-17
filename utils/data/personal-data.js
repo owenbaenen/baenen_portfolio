@@ -2,7 +2,7 @@ export const personalData = {
   name: "Owen Baenen",
   profile: '/profile.jpg',
   designation: "Engineer",
-  description: "Hello! I’m Owen Baenen. I'm a recent Mechanical Engineering graduate from Rice University with a minor in Computational and Applied Math. My interests lie at the intersection of controls, embedded systems, software, and autonomous technologies. Through academic research, simulation work, and hands-on design projects, I’ve built strong problem-solving skills especially in cross-disciplinary environments. I'm passionate about applying computational, mechanical, and software solutions to solve complex problems in emerging tech. ",
+  description: "Hello! I’m Owen Baenen. I’m a Mechanical Engineering graduate from Rice University with a minor in Computational and Applied Mathematics. My work focuses on the intersection of controls, embedded systems, simulation, and autonomous technologies. Through academic research, simulation development, and hands-on engineering projects, I’ve built experience designing and implementing computational tools, control systems, and hardware-software solutions. I enjoy working in cross-disciplinary environments where mechanical design, software, and algorithms come together to solve complex problems. I’m particularly interested in building intelligent systems that combine modeling, control, and embedded software to enable the next generation of autonomous technologies.",
   email: 'owen.baenen@gmail.com',
   phone: '+(360) 644-4488',
   address: 'Peoria IL, United States',
