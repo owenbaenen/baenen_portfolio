@@ -6,6 +6,7 @@ import ProjectCard from './project-card';
 
 const Projects = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [openProjectId, setOpenProjectId] = useState(null);
 
   return (
     <div id='projects' className="relative z-50  my-12 lg:my-24">
@@ -34,12 +35,16 @@ const Projects = () => {
             <div
               id={`sticky-card-${index + 1}`}
               key={index}
-              className={`w-full mx-auto transition-[max-width] duration-300 ${
-                isExpanded ? 'max-w-none' : 'max-w-2xl'
-              }`}
+              className="w-full mx-auto"
             >
               <div className="box-border flex items-center justify-center rounded shadow-[0_0_30px_0_rgba(0,0,0,0.3)] transition-all duration-[0.5s]">
-                <ProjectCard project={project} />
+                <ProjectCard
+                  project={project}
+                  isOpen={openProjectId === project.id}
+                  onToggle={() =>
+                    setOpenProjectId((prev) => (prev === project.id ? null : project.id))
+                  }
+                />
               </div>
             </div>
           ))}

@@ -13,7 +13,7 @@ function AboutSection() {
             Who I am?
           </p>
           <div className="rounded-2xl border border-[#1b2c68a0] bg-[#0b1229] p-5 sm:p-6 shadow-[0_0_30px_rgba(0,0,0,0.25)]">
-            <div className="text-gray-200 text-base lg:text-lg leading-relaxed space-y-4">
+            <div className="text-gray-300 text-base lg:text-lg leading-relaxed space-y-4">
               <p>
                 Hello! I&apos;m{" "}
                 <strong className="text-white font-semibold">
@@ -96,8 +96,8 @@ function AboutSection() {
             {/* Image */}
             <Image
               src={personalData.profile}
-              width={440}
-              height={440}
+              width={340}
+              height={340}
               alt="Owen Baenen"
               className="rounded-full transition-all duration-1000 hover:scale-105 cursor-pointer object-cover w-[320px] h-[320px] lg:w-[440px] lg:h-[440px] lg:-translate-x-12"
             />

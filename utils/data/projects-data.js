@@ -1,39 +1,90 @@
 export const projectsData = [
     {
         id: 1,
-        name: 'AI Powered Financial App',
-        description: "Me and my team built an AI-powered financial mobile application. I have developed API using Express, Typescript, OpenAI, AWS, and MongoDB. Used OTP via AWS SES, Google, and Facebook for the authentication system. Built AI assistants using OpenAI's latest model and trained using our dataset. Voice messages are converted to text using AWS Transcribe. The app fetches data from Google Sheets and generates a PDF term sheet, sent via AWS SES.",
-        tools: ['Express', 'MongoDB', 'OpenAI API', 'AWS SES', 'AWS S3', 'Node Mailer', 'Joi', 'Puppeteer', 'EC2', 'PM2', 'Nginx'],
-        role: 'Backend Developer',
+        name: 'Autonomous Sailboat Swarm',
+        objective: 'Lead the development of a multi‑agent autonomous sailboat fleet with robust sensing, navigation, and control in real‑world conditions.',
+        contributions: [
+            'Implemented an error‑state Kalman filter for LiDAR, IMU, GPS, and camera sensor fusion in C++/Python.',
+            'Built modular, multithreaded embedded software on Raspberry Pi/Arduino with FreeRTOS for real‑time control and navigation.',
+            'Integrated density‑based clustering for LiDAR collision avoidance and adaptive path planning.',
+            'Performed CFD parameterized analysis in ANSYS Fluent to improve sail and hull hydrodynamic performance.'
+        ],
+        tools: ['C++', 'Python', 'FreeRTOS', 'ROS', 'OpenCV', 'ANSYS Fluent'],
+        results: 'Improved navigation robustness and collision avoidance reliability across varied wind and sensing conditions.',
+        details: 'Add field test notes, system diagrams, and build logs here.',
+        posterUrl: '',
+        videoUrl: '',
+        images: [],
+        videos: [
+            '/project_material/sailboat/static_movie.MOV',
+            'https://www.youtube.com/watch?v=IPjDeEaensU'
+        ],
         code: '',
         demo: '',
     },
     {
         id: 2,
-        name: 'Travel Agency App',
-        description: 'I have designed and developed a full-stack web app for 2Expedition, a travel agency in Armenia. I created the UI using NextJS, Typescript, MUI, TailwindCSS, Google Maps, Sun-Editor, and React Slick. The app supports multiple languages and currencies. I developed the API using NestJS, Typescript, MySQL, TypeORM, AWS, and Nodemailer. I deployed the front-end app to AWS Amplify and the back-end app to AWS EC2.',
-        tools: ['NextJS', 'Tailwind CSS', "Google Maps", "NestJS", "TypeScript", "MySQL", "AWS S3", "Sun-Editor", "Gmail Passkey"],
-        role: 'Full Stack Developer',
+        name: 'Cardiovascular Mesh Processing Pipeline and ML Analysis',
+        objective: 'Automate MRI‑based mesh processing and apply ML analysis to quantify cardiovascular structure and flow behavior.',
+        contributions: [
+            'Built an automated pipeline for deformable mesh generation and registration from MRI datasets (Python).',
+            'Implemented Fuzzy K‑Means segmentation with spatial regularization and outlier rejection.',
+            'Streamlined preprocessing and QA for consistent downstream analysis.'
+        ],
+        tools: ['Python', 'NumPy', 'Pandas', 'VTK', 'scikit‑learn'],
+        results: 'Reduced manual preprocessing effort and improved consistency across patient datasets.',
+        details: 'Add poster summary and publication references here.',
+        posterUrl: '/project_material/mesh_pipeline/cardiovascular_mesh_poster.pdf',
+        videoUrl: '',
+        images: ['/project_material/mesh_pipeline/displ_colMapping.gif'],
+        videos: [],
         code: '',
         demo: '',
     },
     {
         id: 3,
-        name: 'AI Powered Real Estate',
-        description: 'My team built an AI-based real estate app using Replicate API and OpenAI. We used Express, Typescript, OpenAI, Replicate, Stripe, and Mongoose to develop the API. We utilized NextJS, Formik, TailwindCSS, and other npm libraries for the UI. We have trained multiple AI assistants using the latest GPT model and integrated Replicate API for image processing. We added role-based auth, subscription plans, Cron job scheduling, and payment integration with Stripe.',
-        tools: ['React', 'Bootstrap', 'SCSS', 'Stripe', 'Express', 'TypeScript', 'MongoDB', 'Azure Blob', 'OpenAI API', 'Replicate AI', 'Cronjob', 'JWT'],
+        name: 'DVT Fluid-Structure Interaction & Sensitivity Study',
+        objective: 'Model deep vein valve FSI to study clot fracture mechanics and sensitivity to physiological parameters.',
+        contributions: [
+            'Built COMSOL Multiphysics models of deep vein valve FSI under physiological flow conditions.',
+            'Performed parametric sensitivity analysis for flow, valve deflection, and clot fracture.',
+            'Summarized key drivers influencing stress concentration and failure risk.'
+        ],
+        tools: ['COMSOL Multiphysics', 'Python', 'MATLAB'],
+        results: 'Identified parameter ranges with the highest impact on flow behavior and clot mechanics.',
+        details: 'Add poster summary, model assumptions, and validation notes here.',
+        posterUrl: '/project_material/DVT_images/comsol_poster.pdf',
+        videoUrl: '',
+        images: [
+            '/project_material/DVT_images/clot_behind_velocity_mag.gif',
+            '/project_material/DVT_images/clot_infront_velocity_mag.gif',
+            '/project_material/DVT_images/moving_wall.gif'
+        ],
+        videos: [],
         code: '',
-        role: 'Full Stack Developer',
         demo: '',
     },
     {
         id: 4,
-        name: 'Newsroom Management',
-        description: "My team and I developed a newspaper management dashboard application called Newsroom Management. As a front-end developer, I worked on creating the dashboard using NextJS, Material UI, Redux, Calendar, and other necessary npm libraries. We used React Redux to manage the application's state and React-hook-form and Sun Editor to handle forms.",
-        tools: ['NextJS', 'Material UI', 'Redux', 'Sun Editor', "Calendar"],
+        name: 'Rice Eclipse Rocket Launch Rail',
+        objective: 'Design and validate a robust launch rail system for reliable and repeatable student rocket launches.',
+        contributions: [
+            'Designed structural components and verified load paths for launch stability and safety.',
+            'Collaborated on fabrication and assembly with iterative prototyping.',
+            'Performed ground tests to validate alignment and operational constraints.'
+        ],
+        tools: ['SolidWorks', 'FEA', 'CNC', 'GD&T'],
+        results: 'Delivered a rail system that improved launch consistency and operational safety.',
+        details: 'Add build photos, testing notes, and launch footage here.',
+        posterUrl: '',
+        videoUrl: '',
+        images: [
+            '/project_material/rocket_launch_rail/rain_static_image.jpg',
+            '/project_material/rocket_launch_rail/rocket_launch_picture.jpg'
+        ],
+        videos: ['/project_material/rocket_launch_rail/rocket_launch_movie.MOV'],
         code: '',
         demo: '',
-        role: 'Full Stack Developer',
     }
 ];
 
@@ -44,9 +95,15 @@ export const projectsData = [
 // {
 //     id: 1,
 //     name: '',
-//     description: "",
+//     objective: '',
+//     contributions: [],
 //     tools: [],
-//     role: '',
+//     results: '',
+//     details: '',
+//     posterUrl: '',
+//     videoUrl: '',
+//     images: [],
+//     videos: [],
 //     code: '',
 //     demo: '',
 // },

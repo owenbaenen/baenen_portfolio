@@ -296,7 +296,7 @@ export const personalData = {
   address: "City, Country",
   github: "https://github.com/yourusername",
   facebook: "https://www.facebook.com/yourprofile",
-  linkedIn: "https://www.linkedin.com/in/yourprofile",
+  linkedIn: "https://www.linkedin.com/in/owenbaenen/",
   twitter: "https://twitter.com/yourusername",
   stackOverflow: "https://stackoverflow.com/users/your-id",
   leetcode: "https://leetcode.com/yourusername/",
