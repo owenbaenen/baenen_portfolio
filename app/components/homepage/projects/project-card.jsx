@@ -9,6 +9,7 @@ function ProjectCard({ project, isOpen, onToggle }) {
   const [isPosterOpen, setIsPosterOpen] = useState(false);
   const [mediaIndex, setMediaIndex] = useState(0);
   const [isMediaHover, setIsMediaHover] = useState(false);
+  const [isMediaPlaying, setIsMediaPlaying] = useState(false);
   const isDvt = project.name.toLowerCase().includes('dvt');
   const posterUrl = project.posterUrl
     ? `${project.posterUrl}${project.posterUrl.includes('#') ? '&' : '#'}toolbar=0&navpanes=0&scrollbar=0`
@@ -33,12 +34,12 @@ function ProjectCard({ project, isOpen, onToggle }) {
   }, [isPosterOpen]);
 
   useEffect(() => {
-    if (!isOpen || isMediaHover || mediaItems.length <= 1) return undefined;
+    if (!isOpen || isMediaHover || isMediaPlaying || mediaItems.length <= 1) return undefined;
     const timer = setInterval(() => {
       setMediaIndex((prev) => (prev + 1) % mediaItems.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, [isOpen, isMediaHover, mediaItems.length]);
+  }, [isOpen, isMediaHover, isMediaPlaying, mediaItems.length]);
 
   useEffect(() => {
     if (mediaIndex >= mediaItems.length) {
@@ -120,19 +121,6 @@ function ProjectCard({ project, isOpen, onToggle }) {
             <p className="text-white font-semibold">Results and Impact</p>
             <p className="text-gray-300">{project.results}</p>
           </div>
-          {project.videoUrl && (
-            <div className="pt-2">
-              <div className="aspect-video w-full max-w-3xl mx-auto overflow-hidden rounded-xl border border-[#1b2c68a0]">
-                <iframe
-                  src={project.videoUrl.replace("watch?v=", "embed/")}
-                  title={`${project.name} video`}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          )}
           <div className="mt-auto flex items-center justify-start">
             {project.posterUrl && (
               <button
@@ -145,55 +133,92 @@ function ProjectCard({ project, isOpen, onToggle }) {
             )}
           </div>
         </div>
-          <div
-            className={`rounded-xl border border-[#1b2c68a0] bg-[#0b1229] p-4 lg:max-h-[80vh] lg:min-h-[560px] overflow-hidden transition-shadow duration-300 ${
-              isMediaHover ? 'shadow-[0_0_20px_rgba(22,242,179,0.2)]' : ''
-            }`}
-            onMouseEnter={() => setIsMediaHover(true)}
-            onMouseLeave={() => setIsMediaHover(false)}
-          >
-            {mediaItems.length > 0 ? (
-              <div className="space-y-4">
-                <div
-                  className={`overflow-hidden rounded-xl border border-[#1b2c68a0] ${isDvt ? 'bg-white p-2' : 'bg-[#0b1229]'} aspect-[16/10]`}
-                >
-                  {mediaItems[mediaIndex]?.type === 'image' ? (
-                    <img
-                      src={mediaItems[mediaIndex].src}
-                      alt={`${project.name} media ${mediaIndex + 1}`}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  ) : mediaItems[mediaIndex]?.type === 'video' ? (
-                    <video
-                      src={mediaItems[mediaIndex].src}
-                      muted
-                      controls
-                      playsInline
-                      className="w-full h-full bg-black"
-                    />
-                  ) : (
-                    <iframe
-                      src={mediaItems[mediaIndex].src.replace("watch?v=", "embed/") + "?mute=1"}
-                      title={`${project.name} media ${mediaIndex + 1}`}
-                      className="w-full h-full bg-black"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  )}
-                </div>
+          <div className="flex flex-col gap-4">
+            <div
+              className={`rounded-xl border border-[#1b2c68a0] bg-[#0b1229] p-3 transition-shadow duration-300 ${
+                isMediaHover ? 'shadow-[0_0_20px_rgba(22,242,179,0.2)]' : ''
+              }`}
+              onMouseEnter={() => setIsMediaHover(true)}
+              onMouseLeave={() => setIsMediaHover(false)}
+            >
+              {mediaItems.length > 0 ? (
+                <div className="space-y-4">
+                  <div
+                    className={`overflow-hidden rounded-xl border border-[#1b2c68a0] ${isDvt ? 'bg-white p-2' : 'bg-[#0b1229]'} flex items-center justify-center w-full`}
+                  >
+                    {mediaItems[mediaIndex]?.type === 'image' ? (
+                      <img
+                        src={mediaItems[mediaIndex].src}
+                        alt={`${project.name} media ${mediaIndex + 1}`}
+                        className="w-full h-auto object-contain rounded-lg border-2 border-[#1b2c68a0]"
+                        loading="lazy"
+                      />
+                    ) : mediaItems[mediaIndex]?.type === 'video' ? (
+                      <video
+                        src={mediaItems[mediaIndex].src}
+                        muted
+                        controls
+                        playsInline
+                        onPlay={() => setIsMediaPlaying(true)}
+                        onPause={() => setIsMediaPlaying(false)}
+                        onEnded={() => setIsMediaPlaying(false)}
+                        className="w-full h-auto bg-black rounded-lg border-2 border-[#1b2c68a0]"
+                      />
+                    ) : (
+                      <div className="w-full aspect-video bg-black rounded-lg border-2 border-[#1b2c68a0] overflow-hidden">
+                        <iframe
+                          src={mediaItems[mediaIndex].src.replace("watch?v=", "embed/") + "?mute=1"}
+                          title={`${project.name} media ${mediaIndex + 1}`}
+                          className="w-full h-full bg-black"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    )}
+                  </div>
                 {mediaItems.length > 1 && (
-                  <div className="h-1 w-full rounded-full bg-[#1a1443]">
-                    <div
-                      className="h-1 rounded-full bg-[#16f2b3]"
-                      style={{ width: `${((mediaIndex + 1) / mediaItems.length) * 100}%` }}
-                    />
+                  <div className="flex items-center gap-2">
+                    <div className="h-[2px] flex-[1.6] rounded-full bg-[#1a1443]">
+                      <div
+                        className="h-[2px] rounded-full bg-[#16f2b3] transition-all duration-300"
+                        style={{ width: `${((mediaIndex + 1) / mediaItems.length) * 100}%` }}
+                      />
+                    </div>
+                    <div className="flex items-center gap-1 justify-end ml-auto">
+                      {mediaItems.map((_, index) => (
+                        <button
+                          key={index}
+                          type="button"
+                          onClick={() => setMediaIndex(index)}
+                          aria-label={`Show slide ${index + 1}`}
+                          className={`h-2 w-2 rounded-full border transition-all duration-200 ${
+                            index === mediaIndex
+                              ? 'bg-[#16f2b3] border-[#16f2b3] shadow-[0_0_10px_rgba(22,242,179,0.5)]'
+                              : 'bg-transparent border-[#1b2c68a0] hover:border-[#16f2b3]'
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 )}
-              </div>
-            ) : (
-              <div className="rounded-lg border border-[#1b2c68a0] bg-[#0b1229] p-6 min-h-[220px] flex items-center justify-center text-gray-500 text-sm">
-                <span>Project media placeholder</span>
+                </div>
+              ) : (
+                <div className="rounded-lg border border-[#1b2c68a0] bg-[#0b1229] p-6 min-h-[220px] flex items-center justify-center text-gray-500 text-sm">
+                  <span>Project media placeholder</span>
+                </div>
+              )}
+            </div>
+            {project.videoUrl && (
+              <div className="overflow-hidden rounded-xl border border-[#1b2c68a0] bg-[#0b1229] p-3">
+                <div className="aspect-video w-full overflow-hidden rounded-lg border border-[#1b2c68a0] bg-black">
+                  <iframe
+                    src={project.videoUrl.replace("watch?v=", "embed/")}
+                    title={`${project.name} video`}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
               </div>
             )}
           </div>

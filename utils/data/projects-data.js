@@ -14,7 +14,11 @@ export const projectsData = [
         details: 'Add field test notes, system diagrams, and build logs here.',
         posterUrl: '',
         videoUrl: '',
-        images: [],
+        images: [
+            '/project_material/sailboat/top_view.png',
+            '/project_material/sailboat/side_view.png',
+            '/project_material/sailboat/pool_side_pic.jpg'
+        ],
         videos: [
             '/project_material/sailboat/static_movie.MOV',
             'https://www.youtube.com/watch?v=IPjDeEaensU'
