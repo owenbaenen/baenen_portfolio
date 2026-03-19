@@ -12,7 +12,7 @@ export const projectsData = [
         tools: ['C++', 'Python', 'FreeRTOS', 'ROS', 'OpenCV', 'ANSYS Fluent'],
         results: 'Improved navigation robustness and collision avoidance reliability across varied wind and sensing conditions.',
         details: 'Add field test notes, system diagrams, and build logs here.',
-        posterUrl: '',
+        posterUrl: '/project_material/sailboat/Final%20Poster%20Design.pdf',
         videoUrl: '',
         images: [
             '/project_material/sailboat/top_view.png',
