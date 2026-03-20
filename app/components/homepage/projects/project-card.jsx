@@ -11,17 +11,31 @@ function ProjectCard({ project, isOpen, onToggle }) {
   const [isMediaHover, setIsMediaHover] = useState(false);
   const [isMediaPlaying, setIsMediaPlaying] = useState(false);
   const isDvt = project.name.toLowerCase().includes('dvt');
+  const isRocket = project.name.toLowerCase().includes('rocket');
   const posterUrl = project.posterUrl
     ? `${project.posterUrl}${project.posterUrl.includes('#') ? '&' : '#'}toolbar=0&navpanes=0&scrollbar=0`
     : '';
   const mediaItems = useMemo(() => {
+    if (project.media && project.media.length > 0) {
+      return project.media.map((item) => {
+        if (typeof item === 'string') {
+          const isYouTube = item.includes('youtube.com') || item.includes('youtu.be');
+          return isYouTube ? { type: 'embed', src: item } : { type: 'image', src: item };
+        }
+        if (!item?.type && item?.src) {
+          const isYouTube = item.src.includes('youtube.com') || item.src.includes('youtu.be');
+          return isYouTube ? { type: 'embed', src: item.src } : { type: 'image', src: item.src };
+        }
+        return item;
+      });
+    }
     const images = (project.images || []).map((src) => ({ type: 'image', src }));
     const videos = (project.videos || []).map((src) => {
       const isYouTube = src.includes('youtube.com') || src.includes('youtu.be');
       return isYouTube ? { type: 'embed', src } : { type: 'video', src };
     });
     return [...images, ...videos];
-  }, [project.images, project.videos]);
+  }, [project.images, project.videos, project.media]);
   useEffect(() => {
     if (isPosterOpen) {
       const { overflow } = document.body.style;
@@ -58,11 +72,26 @@ function ProjectCard({ project, isOpen, onToggle }) {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [isPosterOpen]);
 
+  useEffect(() => {
+    if (!isOpen || mediaItems.length <= 1) return undefined;
+    const onKeyDown = (event) => {
+      const tag = event.target?.tagName?.toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || event.target?.isContentEditable) return;
+      if (event.key === 'ArrowRight') {
+        setMediaIndex((prev) => (prev + 1) % mediaItems.length);
+      } else if (event.key === 'ArrowLeft') {
+        setMediaIndex((prev) => (prev - 1 + mediaItems.length) % mediaItems.length);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isOpen, mediaItems.length]);
+
   return (
     <div
       className={`from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full transition-[max-width,margin] duration-300 ${
         isOpen
-          ? 'lg:w-[calc(100vw-3rem)] lg:max-w-[calc(100vw-3rem)] lg:mx-[calc(50%-50vw+1.5rem)]'
+          ? 'lg:w-[calc(100vw-3rem)] lg:max-w-[calc(100vw-3rem)] lg:mx-[calc(50%-50vw+1.5rem)] z-[60]'
           : 'max-w-2xl mx-auto'
       }`}
     >
@@ -90,7 +119,11 @@ function ProjectCard({ project, isOpen, onToggle }) {
       <div
         className={`overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 transition-all duration-300 ${isOpen ? 'max-h-[1200px] py-4 lg:py-8 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-6 text-sm md:text-base">
+        <div
+          className={`grid grid-cols-1 ${
+            isRocket ? 'lg:grid-cols-[1.2fr_0.8fr]' : 'lg:grid-cols-[1.1fr_0.9fr]'
+          } gap-6 text-sm md:text-base`}
+        >
           <div className="flex flex-col gap-4 h-full">
             <div>
               <p className="text-white font-semibold">Objective</p>
@@ -121,7 +154,7 @@ function ProjectCard({ project, isOpen, onToggle }) {
             <p className="text-white font-semibold">Results and Impact</p>
             <p className="text-gray-300">{project.results}</p>
           </div>
-          <div className="mt-auto flex items-center justify-start">
+          <div className="mt-4 flex items-center justify-start">
             {project.posterUrl && (
               <button
                 type="button"
@@ -225,35 +258,48 @@ function ProjectCard({ project, isOpen, onToggle }) {
         </div>
       </div>
       {isPosterOpen && posterUrl && (
-        <div className="fixed inset-0 z-50 bg-black/80 p-4">
+  <div className="fixed inset-0 z-50 bg-black/80 p-4">
           <div className="relative w-full h-full max-w-6xl mx-auto">
+            <button
+              type="button"
+              className="absolute right-6 top-3 z-10 h-10 w-10 rounded-full bg-red-400 text-[#0d1224] text-2xl font-bold leading-none transition hover:-translate-y-[1px] active:translate-y-[1px]"
+              onClick={() => {
+                const evt = new KeyboardEvent('keydown', { key: 'Escape' });
+                window.dispatchEvent(evt);
+              }}
+              aria-label="Close poster"
+            >
+              ×
+            </button>
             <button
               type="button"
               className="absolute right-0 -top-10 text-white text-sm hover:underline"
               onClick={() => setIsPosterOpen(false)}
             >
-              Close
-            </button>
-            <button
-              type="button"
-              className="absolute right-0 -top-16 h-8 w-8 rounded-full border border-white/40 text-white hover:bg-white/10"
-              onClick={() => setIsPosterOpen(false)}
-              aria-label="Close poster"
-            >
-              ×
-            </button>
-            <div className="w-full h-full rounded-lg overflow-hidden border border-[#1b2c68a0] bg-white">
-              <iframe
-                src={posterUrl}
-                title={`${project.name} poster`}
-                className="w-full h-full"
-              />
-            </div>
-          </div>
-        </div>
-      )}
+        Close
+      </button>
+      <button
+        type="button"
+        className="absolute right-0 -top-16 h-8 w-8 rounded-full border border-white/40 text-white hover:bg-white/10"
+        onClick={() => setIsPosterOpen(false)}
+        aria-label="Close poster"
+      >
+        ×
+      </button>
+      <div className="w-full h-full rounded-lg overflow-hidden border border-[#1b2c68a0] bg-white">
+        <iframe
+          src={posterUrl}
+          title={`${project.name} poster`}
+          className="w-full h-full"
+        />
+      </div>
+    </div>
+  </div>
+)}
     </div>
   );
 };
 
 export default ProjectCard;
+
+

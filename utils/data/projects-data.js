@@ -14,15 +14,16 @@ export const projectsData = [
         details: 'Add field test notes, system diagrams, and build logs here.',
         posterUrl: '/project_material/sailboat/Final%20Poster%20Design.pdf',
         videoUrl: '',
-        images: [
-            '/project_material/sailboat/top_view.png',
-            '/project_material/sailboat/side_view.png',
-            '/project_material/sailboat/pool_side_pic.jpg'
+        media: [
+            { type: 'embed', src: 'https://www.youtube.com/watch?v=IPjDeEaensU' },
+            { type: 'image', src: '/project_material/sailboat/side_view.jpg' },
+            { type: 'image', src: '/project_material/sailboat/top_view.png' },
+            { type: 'image', src: '/project_material/sailboat/sensors.jpg' },
+            { type: 'image', src: '/project_material/sailboat/pool_side_pic.jpg' },
+            { type: 'video', src: '/project_material/sailboat/static_movie.MOV' }
         ],
-        videos: [
-            '/project_material/sailboat/static_movie.MOV',
-            'https://www.youtube.com/watch?v=IPjDeEaensU'
-        ],
+        images: [],
+        videos: [],
         code: '',
         demo: '',
     },
@@ -40,7 +41,13 @@ export const projectsData = [
         details: 'Add poster summary and publication references here.',
         posterUrl: '/project_material/mesh_pipeline/cardiovascular_mesh_poster.pdf',
         videoUrl: '',
-        images: ['/project_material/mesh_pipeline/displ_colMapping.gif'],
+        images: [
+            '/project_material/mesh_pipeline/displ_colMapping.gif',
+            '/project_material/mesh_pipeline/fuzzy_segment.jpg',
+            '/project_material/mesh_pipeline/Slide2.png',
+            '/project_material/mesh_pipeline/side_show_view.jpg',
+            '/project_material/mesh_pipeline/cover.jpg'
+        ],
         videos: [],
         code: '',
         demo: '',
@@ -59,11 +66,18 @@ export const projectsData = [
         details: 'Add poster summary, model assumptions, and validation notes here.',
         posterUrl: '/project_material/DVT_images/comsol_poster.pdf',
         videoUrl: '',
-        images: [
-            '/project_material/DVT_images/clot_behind_velocity_mag.gif',
-            '/project_material/DVT_images/clot_infront_velocity_mag.gif',
-            '/project_material/DVT_images/moving_wall.gif'
+        media: [
+            { type: 'image', src: '/project_material/DVT_images/dvt_slide_01-ezgif.com-crop.gif' },
+            { type: 'image', src: '/project_material/DVT_images/dvt_slide_03-ezgif.com-crop.gif' },
+            { type: 'image', src: '/project_material/DVT_images/dvt_slide_04-ezgif.com-crop.gif' },
+            { type: 'image', src: '/project_material/DVT_images/dvt_slide_05-ezgif.com-crop.gif' },
+            { type: 'image', src: '/project_material/DVT_images/dvt_slide_06-ezgif.com-crop.gif' },
+            { type: 'image', src: '/project_material/DVT_images/dvt_slide_07-ezgif.com-crop.gif' },
+            { type: 'image', src: '/project_material/DVT_images/dvt_slide_09-ezgif.com-crop.gif' },
+            { type: 'image', src: '/project_material/DVT_images/heat_map.jpg' },
+            { type: 'image', src: '/project_material/DVT_images/owne_avila_pic.jpg' }
         ],
+        images: [],
         videos: [],
         code: '',
         demo: '',
@@ -84,6 +98,7 @@ export const projectsData = [
         videoUrl: '',
         images: [
             '/project_material/rocket_launch_rail/rain_static_image.jpg',
+            '/project_material/rocket_launch_rail/rocket_cad.jpg',
             '/project_material/rocket_launch_rail/rocket_launch_picture.jpg'
         ],
         videos: ['/project_material/rocket_launch_rail/rocket_launch_movie.MOV'],
