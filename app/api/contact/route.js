@@ -50,7 +50,7 @@ async function sendEmail(payload, message) {
   const { name, email, message: userMessage } = payload;
   
   const mailOptions = {
-    from: "Portfolio", 
+    from: `Portfolio <${process.env.EMAIL_ADDRESS}>`, 
     to: process.env.EMAIL_ADDRESS, 
     subject: `New Message From ${name}`, 
     text: message, 
@@ -73,33 +73,36 @@ export async function POST(request) {
     const { name, email, message: userMessage } = payload;
     const token = process.env.TELEGRAM_BOT_TOKEN;
     const chat_id = process.env.TELEGRAM_CHAT_ID;
+    const hasTelegram = Boolean(token && chat_id);
+    const hasEmail = Boolean(process.env.EMAIL_ADDRESS && process.env.GMAIL_PASSKEY);
 
-    // Validate environment variables
-    if (!token || !chat_id) {
+    if (!hasTelegram && !hasEmail) {
       return NextResponse.json({
         success: false,
-        message: 'Telegram token or chat ID is missing.',
-      }, { status: 400 });
+        message: 'Email and Telegram are not configured on the server.',
+      }, { status: 500 });
     }
 
     const message = `New message from ${name}\n\nEmail: ${email}\n\nMessage:\n\n${userMessage}\n\n`;
 
-    // Send Telegram message
-    const telegramSuccess = await sendTelegramMessage(token, chat_id, message);
+    const telegramSuccess = hasTelegram
+      ? await sendTelegramMessage(token, chat_id, message)
+      : false;
 
-    // Send email
-    const emailSuccess = await sendEmail(payload, message);
+    const emailSuccess = hasEmail
+      ? await sendEmail(payload, message)
+      : false;
 
-    if (telegramSuccess && emailSuccess) {
+    if (telegramSuccess || emailSuccess) {
       return NextResponse.json({
         success: true,
-        message: 'Message and email sent successfully!',
+        message: 'Message sent successfully!',
       }, { status: 200 });
     }
 
     return NextResponse.json({
       success: false,
-      message: 'Failed to send message or email.',
+      message: 'Failed to send message. Check email/telegram configuration.',
     }, { status: 500 });
   } catch (error) {
     console.error('API Error:', error.message);

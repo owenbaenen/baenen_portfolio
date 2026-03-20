@@ -3,13 +3,15 @@
 'use client';
 
 import * as React from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 function ProjectCard({ project, isOpen, onToggle }) {
   const [isPosterOpen, setIsPosterOpen] = useState(false);
   const [mediaIndex, setMediaIndex] = useState(0);
   const [isMediaHover, setIsMediaHover] = useState(false);
   const [isMediaPlaying, setIsMediaPlaying] = useState(false);
+  const touchStartRef = useRef({ x: 0, y: 0 });
+  const touchActiveRef = useRef(false);
   const isDvt = project.name.toLowerCase().includes('dvt');
   const isRocket = project.name.toLowerCase().includes('rocket');
   const posterUrl = project.posterUrl
@@ -86,6 +88,41 @@ function ProjectCard({ project, isOpen, onToggle }) {
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [isOpen, mediaItems.length]);
+
+  const handleTouchStart = (event) => {
+    if (mediaItems.length <= 1) return;
+    const touch = event.touches?.[0];
+    if (!touch) return;
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+    touchActiveRef.current = true;
+  };
+
+  const handleTouchMove = (event) => {
+    if (!touchActiveRef.current) return;
+    const touch = event.touches?.[0];
+    if (!touch) return;
+    const dx = touch.clientX - touchStartRef.current.x;
+    const dy = touch.clientY - touchStartRef.current.y;
+    if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      event.preventDefault();
+    }
+  };
+
+  const handleTouchEnd = (event) => {
+    if (!touchActiveRef.current || mediaItems.length <= 1) return;
+    touchActiveRef.current = false;
+    const touch = event.changedTouches?.[0];
+    if (!touch) return;
+    const dx = touch.clientX - touchStartRef.current.x;
+    const dy = touch.clientY - touchStartRef.current.y;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      if (dx < 0) {
+        setMediaIndex((prev) => (prev + 1) % mediaItems.length);
+      } else {
+        setMediaIndex((prev) => (prev - 1 + mediaItems.length) % mediaItems.length);
+      }
+    }
+  };
 
   return (
     <div
@@ -173,6 +210,11 @@ function ProjectCard({ project, isOpen, onToggle }) {
               }`}
               onMouseEnter={() => setIsMediaHover(true)}
               onMouseLeave={() => setIsMediaHover(false)}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={() => { touchActiveRef.current = false; }}
+              style={{ touchAction: 'pan-y' }}
             >
               {mediaItems.length > 0 ? (
                 <div className="space-y-4">
