@@ -14,9 +14,19 @@ function ProjectCard({ project, isOpen, onToggle }) {
   const touchActiveRef = useRef(false);
   const isDvt = project.name.toLowerCase().includes('dvt');
   const isRocket = project.name.toLowerCase().includes('rocket');
-  const posterUrl = project.posterUrl
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth <= 768);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  const posterUrlBase = project.posterUrl
     ? `${project.posterUrl}${project.posterUrl.includes('#') ? '&' : '#'}toolbar=0&navpanes=0&scrollbar=0`
     : '';
+  const posterUrl = posterUrlBase ? `${posterUrlBase}${isMobile ? '&zoom=70' : ''}` : '';
   const mediaItems = useMemo(() => {
     if (project.media && project.media.length > 0) {
       return project.media.map((item) => {
@@ -328,11 +338,12 @@ function ProjectCard({ project, isOpen, onToggle }) {
       >
         ×
       </button>
-      <div className="w-full h-full rounded-lg overflow-hidden border border-[#1b2c68a0] bg-white">
+      <div className={`w-full h-full rounded-lg border border-[#1b2c68a0] bg-white ${isMobile ? 'overflow-auto' : 'overflow-hidden'}`}>
         <iframe
           src={posterUrl}
           title={`${project.name} poster`}
           className="w-full h-full"
+          style={isMobile ? { transform: 'scale(0.85)', transformOrigin: 'top left' } : undefined}
         />
       </div>
     </div>
