@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from 'next/link';
 import { BiLogoLinkedin } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
-import { IoMdCall } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
 import ContactForm from './contact-form';
 
@@ -29,15 +28,6 @@ function ContactSection() {
               <span>{personalData.email}</span>
             </p>
             <p className="text-sm md:text-xl flex items-center gap-3">
-              <IoMdCall
-                className="p-2 rounded-full border border-[#16f2b3] text-[#16f2b3]"
-                size={36}
-              />
-              <span>
-                {personalData.phone}
-              </span>
-            </p>
-            <p className="text-sm md:text-xl flex items-center gap-3">
               <CiLocationOn
                 className="p-2 rounded-full border border-[#16f2b3] text-[#16f2b3]"
                 size={36}
@@ -47,6 +37,7 @@ function ContactSection() {
               </span>
             </p>
           </div>
+
           <div className="mt-8 lg:mt-16 flex items-center gap-5 lg:gap-10">
             <Link target="_blank" href={personalData.linkedIn}>
               <BiLogoLinkedin
