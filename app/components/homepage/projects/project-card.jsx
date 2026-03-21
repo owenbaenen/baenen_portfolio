@@ -13,6 +13,8 @@ function ProjectCard({ project, isOpen, onToggle }) {
   const touchStartRef = useRef({ x: 0, y: 0 });
   const touchActiveRef = useRef(false);
   const isDvt = project.name.toLowerCase().includes('dvt');
+  const isCardioMesh = project.name.toLowerCase().includes('cardiovascular mesh processing pipeline');
+  const isDvtFluidStructure = project.name.toLowerCase().includes('dvt fluid structure interaction');
   const isRocket = project.name.toLowerCase().includes('rocket');
   const [isMobile, setIsMobile] = useState(false);
 
@@ -158,7 +160,7 @@ function ProjectCard({ project, isOpen, onToggle }) {
             <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-orange-400"></div>
             <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
           </div>
-          <p className={`text-center ml-3 text-[#16f2b3] ${isOpen ? 'text-xs sm:text-base lg:text-xl' : 'text-[11px] sm:text-sm lg:text-base'} ${isOpen ? '' : 'truncate whitespace-nowrap'}`}>
+          <p className={`text-center ml-3 text-[#16f2b3] ${isOpen ? 'text-xs sm:text-base lg:text-xl' : 'text-[11px] sm:text-sm lg:text-base'} ${isOpen ? '' : 'truncate whitespace-nowrap'} ${isCardioMesh || isDvtFluidStructure ? 'text-[10px] sm:text-sm' : ''}`}>
             {project.name}
           </p>
         </div>
