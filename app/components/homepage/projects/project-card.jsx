@@ -387,7 +387,13 @@ function ProjectCard({ project, isOpen, onToggle }) {
               <button
                 type="button"
                 className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[10px] sm:text-xs md:text-sm font-semibold uppercase tracking-wide text-white bg-slate-700/90 border border-slate-600 transition-all duration-200 hover:bg-slate-600 hover:scale-[1.01] focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-400"
-                onClick={() => setIsPosterOpen(true)}
+                onClick={() => {
+                  if (isMobile) {
+                    window.open(posterUrl, "_blank", "noopener,noreferrer");
+                  } else {
+                    setIsPosterOpen(true);
+                  }
+                }}
               >
                 View Additional Details
               </button>
