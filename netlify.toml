@@ -12,6 +12,11 @@
   status = 200
 
 [[headers]]
+  for = "/project_material/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
