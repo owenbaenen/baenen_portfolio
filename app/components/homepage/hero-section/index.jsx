@@ -30,17 +30,13 @@ function HeroSection() {
           </h1>
 
           <div className="mt-6 rounded-lg bg-slate-800/30 border border-slate-700/50 p-3 text-xs text-gray-300 w-full">
-            <div className="grid grid-cols-3 gap-4 mb-2">
-              <div></div>
-              <div className="text-center">
-                <p className="font-medium text-gray-300 text-xs">You can currently find me:</p>
-              </div>
-              <div></div>
-            </div>
-            <ul className="flex flex-row justify-between list-none">
-              <li className="w-1/3 text-center">• Rockclimbing / hiking</li>
-              <li className="w-1/3 text-center border-l-2 border-slate-500 pl-4 pr-4">• Modifying my autonomous sailboat</li>
-              <li className="w-1/3 text-center border-l-2 border-slate-500 pl-4">• Cooking new recipes</li>
+            <p className="mb-2 font-medium text-[11px] sm:text-xs text-gray-300 whitespace-nowrap text-left md:text-center md:whitespace-normal">
+              You can currently find me:
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-left md:flex md:flex-row md:justify-between md:space-y-0 md:list-none md:pl-0">
+              <li className="w-full md:w-1/3 md:text-center">Rockclimbing / hiking</li>
+              <li className="w-full md:w-1/3 md:text-center md:border-l-2 md:border-slate-500 md:px-4">Modifying my autonomous sailboat</li>
+              <li className="w-full md:w-1/3 md:text-center md:border-l-2 md:border-slate-500 md:pl-4">Cooking new recipes</li>
             </ul>
           </div>
 
@@ -175,3 +171,4 @@ function HeroSection() {
 };
 
 export default HeroSection;
+
