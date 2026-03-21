@@ -20,7 +20,7 @@ function HeroSection() {
 
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
         <div className="flex flex-col items-start justify-center p-2 pb-10 md:pb-6 lg:pt-0">
-          <h1 className="text-lg sm:text-xl md:text-3xl lg:text-[2.2rem] font-bold leading-snug text-white md:font-extrabold lg:leading-[3rem]">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.2rem] font-bold leading-snug text-white md:font-extrabold lg:leading-[3rem]">
             Welcome, <br />
             <span className="whitespace-nowrap">
               My name is{' '}
