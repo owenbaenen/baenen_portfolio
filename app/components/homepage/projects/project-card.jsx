@@ -158,7 +158,7 @@ function ProjectCard({ project, isOpen, onToggle }) {
             <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-orange-400"></div>
             <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
           </div>
-          <p className={`text-center ml-3 text-[#16f2b3] ${isOpen ? 'text-sm sm:text-base lg:text-xl' : 'text-xs sm:text-sm lg:text-base'} ${isOpen ? '' : 'truncate whitespace-nowrap'}`}>
+          <p className={`text-center ml-3 text-[#16f2b3] ${isOpen ? 'text-xs sm:text-base lg:text-xl' : 'text-[11px] sm:text-sm lg:text-base'} ${isOpen ? '' : 'truncate whitespace-nowrap'}`}>
             {project.name}
           </p>
         </div>
@@ -169,15 +169,15 @@ function ProjectCard({ project, isOpen, onToggle }) {
         <div
           className={`grid grid-cols-1 ${
             isRocket ? 'lg:grid-cols-[1.2fr_0.8fr]' : 'lg:grid-cols-[1.1fr_0.9fr]'
-          } gap-6 text-sm md:text-base`}
+          } gap-6 text-xs sm:text-sm md:text-base`}
         >
           <div className="flex flex-col gap-4 h-full">
             <div>
-              <p className="text-white font-semibold">Objective</p>
+              <p className="text-white font-semibold text-xs sm:text-sm md:text-base">Objective</p>
               <p className="text-gray-300">{project.objective}</p>
             </div>
             <div>
-              <p className="text-white font-semibold">Key Contributions</p>
+              <p className="text-white font-semibold text-xs sm:text-sm md:text-base">Key Contributions</p>
               <ul className="list-disc pl-5 text-gray-300 space-y-1">
                 {project.contributions?.map((item, i) => (
                   <li key={i}>{item}</li>
@@ -185,12 +185,12 @@ function ProjectCard({ project, isOpen, onToggle }) {
               </ul>
             </div>
             <div>
-              <p className="text-white font-semibold">Technical Stack/Tools</p>
+              <p className="text-white font-semibold text-xs sm:text-sm md:text-base">Technical Stack/Tools</p>
               <div className="flex flex-wrap gap-2 mt-2">
                 {project.tools?.map((tool, i) => (
                   <span
                     key={i}
-                    className="rounded-full border border-[#1b2c68a0] bg-[#0b1229] px-3 py-1 text-xs md:text-sm text-gray-200"
+                    className="rounded-full border border-[#1b2c68a0] bg-[#0b1229] px-3 py-1 text-[10px] sm:text-xs md:text-sm text-gray-200"
                   >
                     {tool}
                   </span>
@@ -198,14 +198,14 @@ function ProjectCard({ project, isOpen, onToggle }) {
               </div>
             </div>
           <div>
-            <p className="text-white font-semibold">Results and Impact</p>
+            <p className="text-white font-semibold text-xs sm:text-sm md:text-base">Results and Impact</p>
             <p className="text-gray-300">{project.results}</p>
           </div>
           <div className="mt-4 flex items-center justify-start">
             {project.posterUrl && (
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs md:text-sm font-semibold uppercase tracking-wide text-white bg-slate-700/90 border border-slate-600 transition-all duration-200 hover:bg-slate-600 hover:scale-[1.01] focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-400"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[10px] sm:text-xs md:text-sm font-semibold uppercase tracking-wide text-white bg-slate-700/90 border border-slate-600 transition-all duration-200 hover:bg-slate-600 hover:scale-[1.01] focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-400"
                 onClick={() => setIsPosterOpen(true)}
               >
                 View Additional Details
