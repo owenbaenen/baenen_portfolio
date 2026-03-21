@@ -21,12 +21,13 @@ function HeroSection() {
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
         <div className="flex flex-col items-start justify-center p-2 pb-10 md:pb-6 lg:pt-0">
           <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
-            Hello, <br />
-            My name is  {' '}
-            <span className=" text-amber-400">{personalData.name}</span>
+            Welcome, <br />
+            <span className="whitespace-nowrap">
+              My name is{' '}
+              <span className="text-amber-400">{personalData.name}</span>
+            </span>
             {`, and I'm a Professional `}
-            <span className=" text-amber-500">{personalData.designation}</span>
-            .
+            <span className="text-amber-500">{personalData.designation}</span>
           </h1>
 
           <div className="mt-6 rounded-lg bg-slate-800/30 border border-slate-700/50 p-3 text-xs text-gray-300 w-full">
