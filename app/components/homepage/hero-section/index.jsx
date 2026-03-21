@@ -9,7 +9,7 @@ import { RiContactsFill } from "react-icons/ri";
 
 function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
+    <section className="relative flex flex-col items-center justify-between py-4 lg:py-8">
       <Image
         src="/hero.svg"
         alt="Hero"
@@ -19,21 +19,48 @@ function HeroSection() {
       />
 
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
-        <div className="flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
+        <div className="flex flex-col items-start justify-center p-2 pb-10 md:pb-6 lg:pt-0">
           <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
             Hello, <br />
-            This is {' '}
-            <span className=" text-amber-500">{personalData.name}</span>
-            {` , I'm a Professional `}
+            My name is  {' '}
+            <span className=" text-amber-400">{personalData.name}</span>
+            {` , and I'm a Professional `}
             <span className=" text-amber-500">{personalData.designation}</span>
             .
           </h1>
 
-          <div className="my-12 flex items-center gap-5">
+          <div className="mt-6 rounded-lg bg-slate-800/30 border border-slate-700/50 p-3 text-xs text-gray-300 w-full">
+            <div className="grid grid-cols-3 gap-4 mb-2">
+              <div></div>
+              <div className="text-center">
+                <p className="font-medium text-gray-300 text-xs">You can currently find me:</p>
+              </div>
+              <div></div>
+            </div>
+            <ul className="flex flex-row justify-between list-none">
+              <li className="w-1/3 text-center">• Rockclimbing / hiking</li>
+              <li className="w-1/3 text-center border-l-2 border-slate-500 pl-4 pr-4">• Modifying my autonomous sailboat</li>
+              <li className="w-1/3 text-center border-l-2 border-slate-500 pl-4">• Cooking new recipes</li>
+            </ul>
+          </div>
+
+          <div className="my-8 flex items-center gap-3">
+            <Link href="#contact" className="rounded-full transition-all duration-300">
+              <button className="px-3 text-xs md:px-8 py-3 md:py-4 rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#0d1224] no-underline transition-all duration-200 ease-out md:font-semibold flex items-center gap-1 hover:gap-3 bg-gradient-to-b from-[#1af5b6] to-[#10c78f] shadow-[0_6px_14px_rgba(22,242,179,0.18)] ring-1 ring-[#16f2b3]/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] hover:-translate-y-[1px] hover:shadow-[0_8px_18px_rgba(22,242,179,0.22)] active:translate-y-[1px] active:shadow-none">
+                <span>Contact me</span>
+                <RiContactsFill size={16} />
+              </button>
+            </Link>
+
+            <Link className="flex items-center gap-1 hover:gap-3 rounded-full px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-[#0d1224] no-underline transition-all duration-200 ease-out hover:text-[#0d1224] hover:no-underline md:font-semibold bg-gradient-to-b from-[#1af5b6] to-[#10c78f] shadow-[0_6px_14px_rgba(22,242,179,0.18)] ring-1 ring-[#16f2b3]/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] hover:-translate-y-[1px] hover:shadow-[0_8px_18px_rgba(22,242,179,0.22)] active:translate-y-[1px] active:shadow-none" role="button" target="_blank" href={personalData.resume}
+            >
+              <span>Get Resume</span>
+              <MdDownload size={16} />
+            </Link>
             <Link
               href={personalData.linkedIn}
               target='_blank'
-              className="transition-all text-white hover:scale-125 duration-300"
+              className="transition-all text-white hover:scale-125 duration-300 mr-2"
             >
               <BsLinkedin size={30} />
             </Link>
@@ -49,21 +76,6 @@ function HeroSection() {
                 height={30}
                 className="invert brightness-0"
               />
-            </Link>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link href="#contact" className="rounded-full transition-all duration-300">
-              <button className="px-3 text-xs md:px-8 py-3 md:py-4 rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#0d1224] no-underline transition-all duration-200 ease-out md:font-semibold flex items-center gap-1 hover:gap-3 bg-gradient-to-b from-[#1af5b6] to-[#10c78f] shadow-[0_6px_14px_rgba(22,242,179,0.18)] ring-1 ring-[#16f2b3]/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] hover:-translate-y-[1px] hover:shadow-[0_8px_18px_rgba(22,242,179,0.22)] active:translate-y-[1px] active:shadow-none">
-                <span>Contact me</span>
-                <RiContactsFill size={16} />
-              </button>
-            </Link>
-
-            <Link className="flex items-center gap-1 hover:gap-3 rounded-full px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-[#0d1224] no-underline transition-all duration-200 ease-out hover:text-[#0d1224] hover:no-underline md:font-semibold bg-gradient-to-b from-[#1af5b6] to-[#10c78f] shadow-[0_6px_14px_rgba(22,242,179,0.18)] ring-1 ring-[#16f2b3]/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] hover:-translate-y-[1px] hover:shadow-[0_8px_18px_rgba(22,242,179,0.22)] active:translate-y-[1px] active:shadow-none" role="button" target="_blank" href={personalData.resume}
-            >
-              <span>Get Resume</span>
-              <MdDownload size={16} />
             </Link>
           </div>
 
@@ -144,7 +156,7 @@ function HeroSection() {
                 <span className="text-gray-400">{"'],"}</span>
               </div>
               <div className="ml-4 lg:ml-8">
-                <span className="text-white">current:</span>{" "}
+                <span className="text-white">current work:</span>{" "}
                 <span className="text-gray-400">{`'`}</span>
                 <span className="text-cyan-300">
                   Engineering Rotational Development Program, Caterpillar

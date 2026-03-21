@@ -136,10 +136,10 @@ function ProjectCard({ project, isOpen, onToggle }) {
 
   return (
     <div
-      className={`from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full transition-[max-width,margin] duration-300 ${
+      className={`relative w-full rounded-2xl border border-slate-800 bg-slate-900/95 shadow-sm transition-all duration-300 ${
         isOpen
-          ? 'lg:w-[calc(100vw-3rem)] lg:max-w-[calc(100vw-3rem)] lg:mx-[calc(50%-50vw+1.5rem)] z-[60]'
-          : 'max-w-2xl mx-auto'
+          ? 'lg:w-[calc(100vw-3rem)] lg:max-w-[calc(100vw-3rem)] lg:mx-[calc(50%-50vw+1.5rem)] z-[60] shadow-lg'
+          : 'max-w-2xl mx-auto hover:-translate-y-0.5 hover:shadow-md'
       }`}
     >
       <button
@@ -205,7 +205,7 @@ function ProjectCard({ project, isOpen, onToggle }) {
             {project.posterUrl && (
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-wider text-[#0d1224] bg-gradient-to-b from-[#1af5b6] to-[#10c78f] shadow-[0_6px_14px_rgba(22,242,179,0.18)] ring-1 ring-[#16f2b3]/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] transition-all duration-200 hover:-translate-y-[1px] hover:shadow-[0_8px_18px_rgba(22,242,179,0.22)] active:translate-y-[1px] active:shadow-none cursor-pointer"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs md:text-sm font-semibold uppercase tracking-wide text-white bg-slate-700/90 border border-slate-600 transition-all duration-200 hover:bg-slate-600 hover:scale-[1.01] focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-400"
                 onClick={() => setIsPosterOpen(true)}
               >
                 View Additional Details
@@ -310,8 +310,8 @@ function ProjectCard({ project, isOpen, onToggle }) {
         </div>
       </div>
       {isPosterOpen && posterUrl && (
-  <div className="fixed inset-0 z-50 bg-black/80 p-4">
-          <div className="relative w-full h-full max-w-6xl mx-auto">
+  <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm p-3 md:p-6">
+          <div className="relative mx-auto h-[calc(100vh-1.5rem)] w-full max-w-5xl overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/80 shadow-xl md:h-[calc(100vh-2rem)]">
             <button
               type="button"
               className="absolute right-6 top-3 z-10 h-10 w-10 rounded-full bg-red-400 text-[#0d1224] text-2xl font-bold leading-none transition hover:-translate-y-[1px] active:translate-y-[1px]"

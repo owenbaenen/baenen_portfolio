@@ -9,7 +9,7 @@ export const projectsData = [
             'Integrated density‑based clustering for LiDAR collision avoidance and adaptive path planning.',
             'Performed CFD parameterized analysis in ANSYS Fluent to improve sail and hull hydrodynamic performance.'
         ],
-        tools: ['C++', 'Python', 'FreeRTOS', 'ROS', 'OpenCV', 'ANSYS Fluent'],
+        tools: ['C++', 'Python', 'FreeRTOS', 'Kalman Filter', 'OpenCV', 'Digital Filters', 'MultiThreading/Parallelism', 'ANSYS Fluent'],
         results: 'Improved navigation robustness and collision avoidance reliability across varied wind and sensing conditions.',
         details: 'Add field test notes, system diagrams, and build logs here.',
         posterUrl: '/project_material/sailboat/Final%20Poster%20Design.pdf',
@@ -36,7 +36,7 @@ export const projectsData = [
             'Implemented Fuzzy K‑Means segmentation with spatial regularization and outlier rejection.',
             'Streamlined preprocessing and QA for consistent downstream analysis.'
         ],
-        tools: ['Python', 'NumPy', 'Pandas', 'VTK', 'scikit‑learn'],
+        tools: ['Python', 'NumPy', 'Pandas', 'DeepLearning', 'TensorFlow', 'Scikit-Learn', 'Unsupervised Learning', 'CFD/FSI', 'HyperMesh'],
         results: 'Reduced manual preprocessing effort and improved consistency across patient datasets.',
         details: 'Add poster summary and publication references here.',
         posterUrl: '/project_material/mesh_pipeline/cardiovascular_mesh_poster.pdf',
@@ -61,7 +61,7 @@ export const projectsData = [
             'Performed parametric sensitivity analysis for flow, valve deflection, and clot fracture.',
             'Summarized key drivers influencing stress concentration and failure risk.'
         ],
-        tools: ['COMSOL Multiphysics', 'Python', 'MATLAB'],
+        tools: ['COMSOL Multiphysics', 'FSI', 'MATLAB', 'Fracture Mechanics', 'Nonlinear Study'],
         results: 'Identified parameter ranges with the highest impact on flow behavior and clot mechanics.',
         details: 'Add poster summary, model assumptions, and validation notes here.',
         posterUrl: '/project_material/DVT_images/comsol_poster.pdf',
@@ -91,7 +91,7 @@ export const projectsData = [
             'Collaborated on fabrication and assembly with iterative prototyping.',
             'Performed ground tests to validate alignment and operational constraints.'
         ],
-        tools: ['SolidWorks', 'FEA', 'CNC', 'GD&T'],
+        tools: ['SolidWorks', 'FEA', 'CNC', 'Welding', 'Functional Safety', 'Root Cause Analysis'],
         results: 'Delivered a rail system that improved launch consistency and operational safety.',
         details: 'Add build photos, testing notes, and launch footage here.',
         posterUrl: '',
