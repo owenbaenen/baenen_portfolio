@@ -333,7 +333,7 @@ function ProjectCard({ project, isOpen, onToggle }) {
         </div>
       </button>
       <div
-        className={`overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 transition-all duration-300 ${isOpen ? 'max-h-[1200px] py-4 lg:py-8 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
+        className={`overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 transition-all duration-300 ${isOpen ? 'max-h-[2200px] md:max-h-[1200px] py-4 lg:py-8 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
       >
         <div
           className={`grid grid-cols-1 ${
