@@ -155,12 +155,12 @@ function ProjectCard({ project, isOpen, onToggle }) {
           <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
         </div>
         <div className="px-4 lg:px-8 py-3 lg:py-5 relative">
-          <div className="flex flex-row space-x-1 lg:space-x-2 absolute top-1/2 -translate-y-1/2">
+          <div className="flex flex-row space-x-1 lg:space-x-2 absolute top-1/2 -translate-y-1/2 left-3 sm:left-4">
             <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-red-400"></div>
             <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-orange-400"></div>
             <div className="h-2 w-2 lg:h-3 lg:w-3 rounded-full bg-green-200"></div>
           </div>
-          <p className={`text-center ml-3 text-[#16f2b3] ${isOpen ? 'text-xs sm:text-base lg:text-xl' : 'text-[11px] sm:text-sm lg:text-base'} ${isOpen ? '' : 'truncate whitespace-nowrap'} ${isCardioMesh || isDvtFluidStructure ? 'text-[10px] sm:text-sm' : ''}`}>
+          <p className={`text-center text-[#16f2b3] pl-10 sm:pl-12 ${isOpen ? 'text-xs sm:text-base lg:text-xl' : 'text-[11px] sm:text-sm lg:text-base'} ${isOpen ? '' : 'truncate whitespace-nowrap'} ${isCardioMesh || isDvtFluidStructure ? 'text-[10px] sm:text-sm' : ''}`}>
             {project.name}
           </p>
         </div>
