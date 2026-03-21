@@ -73,8 +73,7 @@ export const projectsData = [
             'Modeled nonlinear hyperelastic vein walls and valve leaflets using Mooney-Rivlin material models to capture large deformation behavior.',
             'Integrated clot geometry into the flow domain to analyze its impact on hemodynamics, stress distribution, and recirculation zones.',
             'Performed extensive parametric sensitivity studies on valve angle, clot size, and clot location to identify key drivers of clot formation and detachment risk.',
-            'Analyzed vorticity, recirculation zones, and stress/strain fields to evaluate conditions leading to clot propagation and fracture.',
-            'Validated model assumptions against literature and experimental data, refining boundary conditions and material properties for physiological accuracy.'
+            'Analyzed vorticity, recirculation zones, and stress/strain fields to evaluate conditions leading to clot propagation and fracture.'
         ],
         tools: ['COMSOL Multiphysics', 'FSI', 'MATLAB', 'Nonlinear FEA', 'Hyperelastic Modeling', 'Parametric Analysis'],
         results: 'Identified critical parameters influencing DVT progression, including strong sensitivity to clot size and valve geometry, and demonstrated the importance of wall deformation on stress prediction and flow behavior.',
