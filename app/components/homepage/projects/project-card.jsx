@@ -23,6 +23,7 @@ function ProjectCard({ project, isOpen, onToggle }) {
   const touchStartBottomRef = useRef({ x: 0, y: 0 });
   const touchActiveBottomRef = useRef(false);
   const activeCarouselRef = useRef('single');
+  const [posterZoom, setPosterZoom] = useState(0.85);
   const [isMobile, setIsMobile] = useState(false);
   const projectName = (project.name || '').toLowerCase();
   const isDvt = project.id === 3 || projectName.includes('dvt');
@@ -70,6 +71,7 @@ function ProjectCard({ project, isOpen, onToggle }) {
     if (isPosterOpen) {
       const { overflow } = document.body.style;
       document.body.style.overflow = 'hidden';
+      setPosterZoom(isMobile ? 0.85 : 1);
       return () => {
         document.body.style.overflow = overflow;
       };
@@ -461,28 +463,49 @@ function ProjectCard({ project, isOpen, onToggle }) {
             >
               ×
             </button>
-            <button
-              type="button"
-              className="absolute right-0 -top-10 text-white text-sm hover:underline"
-              onClick={() => setIsPosterOpen(false)}
-            >
-              Close
-            </button>
-            <button
-              type="button"
-              className="absolute right-0 -top-16 h-8 w-8 rounded-full border border-white/40 text-white hover:bg-white/10"
-              onClick={() => setIsPosterOpen(false)}
-              aria-label="Close poster"
-            >
-              ×
-            </button>
+            {isMobile && (
+              <div className="absolute left-6 top-3 z-10 flex items-center gap-2">
+                <button
+                  type="button"
+                  className="h-8 w-8 rounded-full border border-white/40 text-white hover:bg-white/10"
+                  onClick={() => setPosterZoom((z) => Math.max(0.6, Math.round((z - 0.1) * 10) / 10))}
+                  aria-label="Zoom out"
+                >
+                  -
+                </button>
+                <button
+                  type="button"
+                  className="h-8 w-8 rounded-full border border-white/40 text-white hover:bg-white/10"
+                  onClick={() => setPosterZoom((z) => Math.min(2.5, Math.round((z + 0.1) * 10) / 10))}
+                  aria-label="Zoom in"
+                >
+                  +
+                </button>
+                <button
+                  type="button"
+                  className="rounded-full border border-white/40 px-3 py-1 text-xs text-white hover:bg-white/10"
+                  onClick={() => setPosterZoom(1)}
+                >
+                  Reset
+                </button>
+              </div>
+            )}
             <div className={`w-full h-full rounded-lg border border-[#1b2c68a0] bg-white ${isMobile ? 'overflow-auto' : 'overflow-hidden'}`}>
-              <iframe
-                src={posterUrl}
-                title={`${project.name} poster`}
+              <div
                 className="w-full h-full"
-                style={isMobile ? { transform: 'scale(0.85)', transformOrigin: 'top left' } : undefined}
-              />
+                style={isMobile ? {
+                  transform: `scale(${posterZoom})`,
+                  transformOrigin: 'top left',
+                  width: posterZoom > 1 ? `${100 / posterZoom}%` : '100%',
+                  height: posterZoom > 1 ? `${100 / posterZoom}%` : '100%',
+                } : undefined}
+              >
+                <iframe
+                  src={posterUrl}
+                  title={`${project.name} poster`}
+                  className="w-full h-full"
+                />
+              </div>
             </div>
           </div>
         </div>
